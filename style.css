@@ -1,0 +1,10 @@
+.ganerateNumber-box {
+  display: flex;
+  align-items: center;
+}
+.ganerateNumber-box h2 {
+  margin-right: 10px;
+}
+.hidden {
+  display: none;
+}
