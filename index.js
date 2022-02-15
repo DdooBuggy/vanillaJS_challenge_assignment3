@@ -3,7 +3,6 @@ const generateNumberBox = document.querySelector(".ganerateNumber-box");
 const generateNumberInput = generateNumberBox.querySelector("input");
 const guessNumberBox = document.querySelector(".guessNumber-box");
 const guessNumberInput = guessNumberBox.querySelector("input");
-const playBtn = guessNumberBox.querySelector("button");
 const currentInfo = document.querySelector(".currentInfo");
 const lostSign = document.querySelector(".lost");
 const winSign = document.querySelector(".win");
