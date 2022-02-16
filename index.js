@@ -1,30 +1,22 @@
-const generalForm = document.querySelector(".generalForm");
-const generateNumberBox = document.querySelector(".ganerateNumber-box");
-const generateNumberInput = generateNumberBox.querySelector("input");
-const guessNumberBox = document.querySelector(".guessNumber-box");
-const guessNumberInput = guessNumberBox.querySelector("input");
-const currentInfo = document.querySelector(".currentInfo");
-const lostSign = document.querySelector(".lost");
-const winSign = document.querySelector(".win");
+const guessForm = document.getElementById("js-guess");
+const result = document.getElementById("js-result");
+const maxNumber = document.getElementById("maxNumber");
 
-const HIDDEN_CLASS = "hidden"
-
-function handleNumber(event) {
-    event.preventDefault();
-    const generatedNumber = generateNumberInput.value;
-    const guessNumber = parseInt(guessNumberInput.value);
-    const machineNumber = Math.ceil(Math.random() * generatedNumber);
-
-    currentInfo.classList.remove(HIDDEN_CLASS);
-    currentInfo.innerHTML = `You chose: ${guessNumber}, the machine chose: ${machineNumber}`;
-
-    if (guessNumber === machineNumber) {
-        winSign.classList.remove(HIDDEN_CLASS);
-        lostSign.classList.add(HIDDEN_CLASS);
-    } else {
-        lostSign.classList.remove(HIDDEN_CLASS);
-        winSign.classList.add(HIDDEN_CLASS);
-    }
+function handleGuessSubmit(e) {
+  e.preventDefault();
+  const guessInput = guessForm.querySelector("input");
+  if (guessInput.value === "" && maxNumber === "") {
+    return;
+  }
+  const max = maxNumber.value;
+  const random = Math.ceil(Math.random() * max);
+  const userGuess = parseInt(guessInput.value, 10);
+  const resultSpan = result.querySelector("span");
+  resultSpan.innerHTML = `
+  You chose: ${userGuess},
+  the machine chose: ${random}.<br />
+  <strong>${userGuess === random ? "You won!" : "You lost!"}</strong>
+  `;
 }
 
-generalForm.addEventListener("submit", handleNumber);
+guessForm.addEventListener("submit", handleGuessSubmit);
